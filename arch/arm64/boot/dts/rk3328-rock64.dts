@@ -205,3 +205,8 @@
 	// timing1 is 1920x1080p60
 	native-mode = <&timing1>;
 };
+
+&hdmi {
+	rockchip,cec_enable = <1>;
+	rockchip,cec_wakeup = <1>;
+};
