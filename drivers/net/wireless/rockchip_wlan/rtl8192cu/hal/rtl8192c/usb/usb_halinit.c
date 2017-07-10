@@ -430,15 +430,15 @@ static u8 _InitPowerOn(_adapter *padapter)
 		{
 			DBG_8192C("SlimComboDbg == TRUE\n");
 
-			// 1. SIC?Test Mode 中, Debug Ports 會自動 Enable, 所以 Driver 上來後, 
-			//	要關掉請設定 0x 00[7] -> "1", 將它 Disable.   effect if not: power consumption increase
+			// 1. SIC?Test Mode 嚙踝蕭, Debug Ports 嚙罵嚙諛堆蕭 Enable, 嚙課以 Driver 嚙磕嚙諉恬蕭, 
+			//	嚙緯嚙踝蕭嚙踝蕭嚙請設嚙緩 0x 00[7] -> "1", 嚙瞇嚙踝蕭 Disable.   effect if not: power consumption increase
 			rtw_write8(padapter, REG_SYS_ISO_CTRL, rtw_read8(padapter, REG_SYS_ISO_CTRL)|BIT7);
 
-			// 2. SIC?Test Mode 中, GPIO-8?會 report Power State 所以 Driver 上來後, 請設定? 0x04[6] -> "1" 將它 Disable
+			// 2. SIC?Test Mode 嚙踝蕭, GPIO-8?嚙罵 report Power State 嚙課以 Driver 嚙磕嚙諉恬蕭, 嚙請設嚙緩? 0x04[6] -> "1" 嚙瞇嚙踝蕭 Disable
 			// effect if not: GPIO-8 could not be GPIO or LED function
 			rtw_write8(padapter, REG_APS_FSMCO, rtw_read8(padapter, REG_APS_FSMCO)|BIT6);
 
-			// 3. SIC Test Mode 中, EESK, EECS 會 report?Host Clock status, 所以 Driver 上來後, 請設定? 0x40[4] -> "1" 將它切成 EEPROM 使用 Pin (autoload still from Efuse)
+			// 3. SIC Test Mode 嚙踝蕭, EESK, EECS 嚙罵 report?Host Clock status, 嚙課以 Driver 嚙磕嚙諉恬蕭, 嚙請設嚙緩? 0x40[4] -> "1" 嚙瞇嚙踝蕭嚙踝蕭嚙踝蕭 EEPROM 嚙誕伐蕭 Pin (autoload still from Efuse)
 			//  effect if not:power consumption increase
 			value8 = rtw_read8(padapter, REG_GPIO_MUXCFG)|BIT4 ;
 		#ifdef CONFIG_BT_COEXIST	
@@ -452,7 +452,7 @@ static u8 _InitPowerOn(_adapter *padapter)
 			rtw_write8(padapter, REG_GPIO_MUXCFG,value8 );
 			
 			
-			// 4. SIC Test Mode 中,?SIC Debug ports 會自動 Enable , 所以 Driver 上來後馬上, 請設定? 0x40[15:11] -> “0x00”, 將它Disable
+			// 4. SIC Test Mode 嚙踝蕭,?SIC Debug ports 嚙罵嚙諛堆蕭 Enable , 嚙課以 Driver 嚙磕嚙諉後馬嚙磕, 嚙請設嚙緩? 0x40[15:11] -> 嚙踝蕭0x00嚙踝蕭, 嚙瞇嚙踝蕭Disable
 			//  4.1Two Steps setting for safety: 0x40[15,13,12, 11] -> "0", then ?0x40[14] -> "0"
 			// effect if not: Host could not transfer packets, and GPIO-3,2 will occupied by SIC then Co-exist could not work.
 			rtw_write16(padapter, REG_GPIO_MUXCFG, (rtw_read16(padapter, REG_GPIO_MUXCFG)&0x07FF)|BIT14);
@@ -3417,7 +3417,7 @@ ReadTxPowerInfo(
 		}
 	}
 
-#if DBG
+#if 0
 
 	for(rfPath = 0 ; rfPath < RF_PATH_MAX ; rfPath++){
 		for(ch = 0 ; ch < CHANNEL_MAX_NUMBER ; ch++){
@@ -4096,7 +4096,7 @@ u16 CRC16(u8 data,u16 CRC)
 		}
 		//printf("bit5 CRC =%x\n",CRC_Result);
 
-		CRC=CRC_Result; //重複使用上一次的結果
+		CRC=CRC_Result; //嚙踝蕭嚙複使用上嚙瑾嚙踝蕭嚙踝蕭嚙踝蕭嚙瘦
 	}
 
 	return CRC;
@@ -4122,7 +4122,7 @@ u16 calc_crc(u8 * pdata,int length)
 		CRC=CRC16(pdata[i],CRC);
 	}
 
-	CRC=~CRC;                  //取補數
+	CRC=~CRC;                  //嚙踝蕭嚙褕潘蕭
 	printk("CRC =%x\n",CRC);
 	return CRC;
 }
