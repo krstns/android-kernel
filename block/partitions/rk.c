@@ -285,7 +285,7 @@ static void rkpart_bootmode_fixup(void)
 	if (strstr(saved_command_line, "androidboot.mode=charger")) {
 		new_command_line = kzalloc(saved_command_line_len + strlen(charger) + 1, GFP_KERNEL);
 		sprintf(new_command_line, "%s%s", saved_command_line, charger);
-	} else if(strstr(saved_command_line, "storagemedia=sd")) {
+	 } else if(strstr(saved_command_line, "storagemedia=sd") && !(strstr(saved_command_line, "sdfwupdate"))) {
 		new_command_line = kzalloc(saved_command_line_len + strlen(sd) + 1, GFP_KERNEL);
 		sprintf(new_command_line, "%s%s", saved_command_line, sd);
 	} else {
