@@ -64,3 +64,4 @@ obj-$(CONFIG_ROCKCHIP_SCR) += rk_scr.o
 obj-$(CONFIG_GPIO_DET)		+= gpio-detection.o
 obj-$(CONFIG_ONBOARD_MODEM) += rk_modem_control.o
 obj-$(CONFIG_MOTOR_GPIO) += motor-gpio.o
+obj-y			+=rock64_pin_test.o
