@@ -136,7 +136,7 @@
 #define INTCR_SDBEIE_MASK		(0x1 << 4)
 
 /* size * width: 16*4 = 64 bytes */
-#define SPDIF_DMA_BURST_SIZE		(16)
+#define SPDIF_DMA_BURST_SIZE		(8)
 
 struct rockchip_spdif_info {
 	spinlock_t lock;/*lock parmeter setting.*/
