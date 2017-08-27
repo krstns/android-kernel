@@ -125,11 +125,17 @@
 	status = "disabled";
 };
 
+&sdmmc {
+	/delete-property/ pinctrl-1;
+	pinctrl-names = "default";
+};
+
 &sdmmc_ext {
 	/delete-property/ supports-sd;
 	/delete-property/ broken-cd;
 	/delete-property/ card-detect-delay;
 	/delete-property/ power-inverted;
+	/delete-property/ pinctrl-1;
 
 	clock-frequency = <150000000>;
 	clock-freq-min-max = <200000 150000000>;
@@ -139,6 +145,7 @@
 	cap-sdio-irq;
 	supports-UHS_SDR104;
 	status = "okay";
+	pinctrl-names = "default";
 };
 
 &spdif {
