@@ -70,8 +70,8 @@
 
 		lpddr3_odt_dis_freq = <666>;
 		phy_lpddr3_odt_dis_freq = <666>;
-		lpddr3_drv = <LP3_DS_40ohm>;
-		lpddr3_odt = <LP3_ODT_240ohm>;
+		lpddr3_drv = <LP3_DS_34ohm>;
+		lpddr3_odt = <LP3_ODT_DIS>;
 		phy_lpddr3_ca_drv = <PHY_DDR4_LPDDR3_RON_RTT_34ohm>;
 		phy_lpddr3_ck_drv = <PHY_DDR4_LPDDR3_RON_RTT_43ohm>;
 		phy_lpddr3_dq_drv = <PHY_DDR4_LPDDR3_RON_RTT_34ohm>;
