@@ -81,6 +81,7 @@
 		wifi_chip_type = "rtl8822bs";
 		WIFI,poweren_gpio = <&gpio3 GPIO_B0 GPIO_ACTIVE_HIGH>;
 		WIFI,host_wake_irq = <&gpio3 GPIO_A1 GPIO_ACTIVE_HIGH>;
+		status = "disabled";
 	};
 
 	wireless-bluetooth {
