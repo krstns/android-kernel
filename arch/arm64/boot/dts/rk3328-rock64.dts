@@ -124,7 +124,7 @@
 };
 
 &gmac2phy {
-	status = "disabled";
+	status = "okay";
 };
 
 &sdio {
