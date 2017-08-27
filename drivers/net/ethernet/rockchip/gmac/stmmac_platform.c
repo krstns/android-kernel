@@ -900,8 +900,10 @@ static int phy_power_on(struct bsp_priv *bsp_priv, bool enable)
 		/* reset */
 		if (gpio_is_valid(bsp_priv->reset_io)) {
 			gpio_direction_output(bsp_priv->reset_io,
+					      !bsp_priv->reset_io_level);
+			gpio_direction_output(bsp_priv->reset_io,
 					      bsp_priv->reset_io_level);
-			mdelay(5);
+			mdelay(10);
 			gpio_direction_output(bsp_priv->reset_io,
 					      !bsp_priv->reset_io_level);
 		}
@@ -911,7 +913,7 @@ static int phy_power_on(struct bsp_priv *bsp_priv, bool enable)
 			internal_phy_power_on(bsp_priv, enable);
 		}
 
-		mdelay(30);
+		mdelay(50);
 	} else {
 		/* pull down reset */
 		if (gpio_is_valid(bsp_priv->reset_io)) {
