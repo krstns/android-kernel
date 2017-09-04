@@ -3182,6 +3182,7 @@ static int dw_mci_of_get_wp_gpio(struct device *dev, u8 slot)
 }
 
 /* find the cd gpio for a given slot */
+#if 1
 static void dw_mci_of_get_cd_gpio(struct device *dev, u8 slot,
 					struct mmc_host *mmc)
 {
@@ -3200,7 +3201,7 @@ static void dw_mci_of_get_cd_gpio(struct device *dev, u8 slot,
 	if (mmc_gpio_request_cd(mmc, gpio, 0))
 		dev_warn(dev, "gpio [%d] request failed\n", gpio);
 }
-
+#endif
 static irqreturn_t dw_mci_gpio_cd_irqt(int irq, void *dev_id)
 {
         struct mmc_host *mmc = dev_id;
@@ -4227,6 +4228,7 @@ int dw_mci_suspend(struct dw_mci *host)
 		regulator_disable(host->vmmc);
 
 	/* Only for sdmmc controller */
+	#if 1
 	if (host->mmc->restrict_caps & RESTRICT_CARD_TYPE_SD) {
 		disable_irq(host->irq);
 			if (pinctrl_select_state(host->pinctrl, host->pins_idle) < 0)
@@ -4240,7 +4242,7 @@ int dw_mci_suspend(struct dw_mci *host)
                         enable_irq_wake(host->mmc->slot.cd_irq);
                 }
         }
-
+	#endif
 	mci_writel(host, RINTSTS, 0xFFFFFFFF);
 	mci_writel(host, INTMASK, 0x00);
 	mci_writel(host, CTRL, 0x00);
@@ -4278,6 +4280,7 @@ int dw_mci_resume(struct dw_mci *host)
         }
 
     	/*only for sdmmc controller*/
+	#if 1
 	if (host->mmc->restrict_caps & RESTRICT_CARD_TYPE_SD) {
                 /* Soc rk3126/3036 already in gpio_cd mode */
                 if (!soc_is_rk3126() && !soc_is_rk3126b() && !soc_is_rk3036()) {
@@ -4317,6 +4320,7 @@ int dw_mci_resume(struct dw_mci *host)
                         /* RK3036_GRF_SOC_CON0 is compatible with rk312x, tmp setting */
                         grf_writel(((1 << 8) << 16) | (0 << 8), RK3036_GRF_SOC_CON0);
 	}
+	#endif
 	if (host->vmmc) {
 		ret = regulator_enable(host->vmmc);
 		if (ret){
