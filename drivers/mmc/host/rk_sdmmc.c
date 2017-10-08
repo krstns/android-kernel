@@ -4231,7 +4231,7 @@ int dw_mci_suspend(struct dw_mci *host)
 	#if 1
 	if (host->mmc->restrict_caps & RESTRICT_CARD_TYPE_SD) {
 		disable_irq(host->irq);
-			if (pinctrl_select_state(host->pinctrl, host->pins_idle) < 0)
+			if (IS_ERR(host->pins_idle) || pinctrl_select_state(host->pinctrl, host->pins_idle) < 0)
 				MMC_DBG_ERR_FUNC(host->mmc,
 					"Idle pinctrl setting failed! [%s]",
 					mmc_hostname(host->mmc));
@@ -4289,7 +4289,7 @@ int dw_mci_resume(struct dw_mci *host)
                 }
 
 		if (!present) {
-			if (!IS_ERR(host->pins_udbg)) {
+			if (!IS_ERR(host->pins_idle) && !IS_ERR(host->pins_udbg)) {
 				if (pinctrl_select_state(host->pinctrl, host->pins_idle) < 0)
 					MMC_DBG_ERR_FUNC(host->mmc,
 						"Idle pinctrl setting failed! [%s]",
