@@ -57,14 +57,14 @@
 
 		standby-red {
 			linux,default-trigger = "none";
-			gpios = <&rk805 0 GPIO_ACTIVE_LOW>;
+			gpios = <&rk805 1 GPIO_ACTIVE_LOW>;
 			mode = <0x23>;
 			default-state = "on";
 		};
 
 		power-white {
 			linux,default-trigger = "none";
-			gpios = <&rk805 1 GPIO_ACTIVE_HIGH>;
+			gpios = <&rk805 0 GPIO_ACTIVE_HIGH>;
 			mode = <0x23>;
 			default-state = "on";
 		};
