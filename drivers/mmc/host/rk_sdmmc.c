@@ -3182,7 +3182,7 @@ static int dw_mci_of_get_wp_gpio(struct device *dev, u8 slot)
 }
 
 /* find the cd gpio for a given slot */
-#if 1
+#ifdef ENABLE_PM_OF_SDMMC
 static void dw_mci_of_get_cd_gpio(struct device *dev, u8 slot,
 					struct mmc_host *mmc)
 {
@@ -4228,7 +4228,7 @@ int dw_mci_suspend(struct dw_mci *host)
 		regulator_disable(host->vmmc);
 
 	/* Only for sdmmc controller */
-	#if 1
+	#ifdef ENABLE_PM_OF_SDMMC
 	if (host->mmc->restrict_caps & RESTRICT_CARD_TYPE_SD) {
 		disable_irq(host->irq);
 			if (IS_ERR(host->pins_idle) || pinctrl_select_state(host->pinctrl, host->pins_idle) < 0)
@@ -4280,7 +4280,7 @@ int dw_mci_resume(struct dw_mci *host)
         }
 
     	/*only for sdmmc controller*/
-	#if 1
+	#ifdef ENABLE_PM_OF_SDMMC
 	if (host->mmc->restrict_caps & RESTRICT_CARD_TYPE_SD) {
                 /* Soc rk3126/3036 already in gpio_cd mode */
                 if (!soc_is_rk3126() && !soc_is_rk3126b() && !soc_is_rk3036()) {
