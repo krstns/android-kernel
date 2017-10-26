@@ -4260,7 +4260,9 @@ int dw_mci_resume(struct dw_mci *host)
 	int i, ret;
 	u32 regs;
 	struct dw_mci_slot *slot;
+	#ifdef ENABLE_PM_OF_SDMMC
 	int present = dw_mci_get_cd(host->mmc);
+        #endif
 
 	if (host->rst_ops &&
 		host->rst_ops->post_resume)
