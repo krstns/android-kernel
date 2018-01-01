@@ -111,10 +111,12 @@
 	pinctrl-0 = <&spdifm0_tx>;
 	status = "okay";
 };
+
 &usb2_otg {
 	/* 0 - Normal, 1 - Force Host, 2 - Force Device */
 	rockchip,usb-mode = <1>;
 };
+
 &pwm3 {
 	/* for IPTV */
 	ir_key2{
@@ -190,3 +192,13 @@
 	};
 };
 
+&disp_timings {
+	// timing0 is 1280x720p60
+	// timing1 is 1920x1080p60
+	native-mode = <&timing1>;
+};
+
+&hdmi {
+	rockchip,cec_enable = <1>;
+	rockchip,cec_wakeup = <1>;
+};
