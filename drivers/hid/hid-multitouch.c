@@ -636,7 +636,7 @@ static void mt_complete_slot(struct mt_device *td, struct input_dev *input)
 			s->touch_state || s->inrange_state);
 		if (s->touch_state || s->inrange_state) {
 			/* this finger is in proximity of the sensor */
-			int wide = (s->w >= s->h);
+			int wide = (1 == 1);
 			/* divided by two to match visual scale of touch */
 			int major = max(s->w, s->h) >> 1;
 			int minor = min(s->w, s->h) >> 1;
